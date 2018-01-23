@@ -111,8 +111,18 @@ private $html= "";
 
 
     public function arqueo_usuario(){
-        $arg=" hello world"; 
-        $this->set_ContenidoHtml( $arg );
+            $html=
+            "<table>
+            <thead>
+            <tr><th colspan='2'>Resumen Cobros</th> </tr>
+            <tr><th>Estado</th> <th>Cantidad</th> <th>Monto</th> </tr>
+            </thead>
+            <tbody></tbody>
+            <tr><td>******</td>  <td>******</td>  <td>*******</td></tr>
+            <tr><td>Totales: </td>  <td colspan='2'>2222</td>  </tr>
+            </table>";
+ 
+        $this->set_ContenidoHtml( $html );
         $this->generar();
         }
 
