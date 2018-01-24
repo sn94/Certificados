@@ -114,14 +114,25 @@ private $html= "";
         // la cadena html encerrada entre comillas simples
         $regs= $this->Informes_model->arqueo_usuario_diario();
         $totales= $regs['totales'];
-        $detalle= $regs['detalle']; 
-        $vartest= "blabla"
+        $detalle= $regs['detalle'];  
         // Estilos
-        $estilo_tab1= "border: 1px #00td solid; background: gray;";
-        $estilo1= "font-size:11px;";
-$html=' 
-<table  style="$estilo_tab1">
-<tr><th>N&deg;</th> <th>N&deg; comprobante</th> <th>N&deg; certificado</th> 
+        $estilos="<style>
+        table{
+                border: 1px #0000aa solid;background: #cccccc; 
+                margin: 2px;
+        tr{
+                margin:1px;
+        }
+        td {
+                border: 1px solid #cccccc;
+                background-color: #ffffef;
+                margin: 5px;
+            }
+        </style>"; 
+
+$html= $estilos .
+' <table>
+<tr bgcolor="#cccccc"><th >N&deg;</th> <th>N&deg; comprobante</th> <th>N&deg; certificado</th> 
 <th>Fecha certificado</th> <th>Estado cobro</th> <th>Monto</th> 
 <th>Nombres</th>  </tr>';
 
@@ -136,10 +147,11 @@ $html.='
 $r++; 
 endforeach;
 
-    $html.= '</table>
 
-    <table style="$estilo_tab1">
-    <tr><th colspan="3">Resumen Cobros</th> </tr> 
+$html.= '</table>
+
+    <table >
+    <tr   bgcolor="#cccccc"><th colspan="3" >Resumen Cobros</th> </tr> 
     <tr><th>Estado</th> <th>Cantidad</th> <th>Monto</th> </tr>';
     if( sizeof($totales) > 0) {
         $html.='<tr><td>Boletas cobradas</td>  <td>'.$totales['Cant bol'].'</td>  <td>'.$totales['Total'].'</td></tr> 
@@ -150,9 +162,9 @@ endforeach;
 }
 
     $html.='
-    <table style="border: 1px #00td solid; background: gray;">
-    <tr><th colspan="3">Resumen Certificados</th> </tr> 
-    <tr><th>Estado</th> <th>Cantidad</th> </tr>
+    <table >
+    <tr  bgcolor="#cccccc"><th colspan="3">Resumen Certificados</th> </tr> 
+    <tr  bgcolor="#cccccc"><th>Estado</th> <th>Cantidad</th> </tr>
 
     <tr><td>Emitidos</td>  <td>'.$totales['Cant certi'].'</td>  </tr> 
     <tr><td>Anulados</td>  <td>'.$totales['Cant certi anu'].'</td>  </tr>
