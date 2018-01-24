@@ -115,7 +115,7 @@ private $html= "";
         $regs= $this->Informes_model->arqueo_usuario_diario();
         $totales= $regs['totales'];
         $detalle= $regs['detalle']; 
-
+        $vartest= "blabla"
         // Estilos
         $estilo_tab1= "border: 1px #00td solid; background: gray;";
         $estilo1= "font-size:11px;";
