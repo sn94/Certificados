@@ -19,7 +19,6 @@
 
 
 
-
 <div class="row">
 <div class="col col-md-4">Total cobrado: </div><div class="col col-md-4"> <?= $totales['Total'] ?></div>
 </div><!-- end row --> 

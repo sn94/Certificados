@@ -1,7 +1,7 @@
 <div class="container formulario">
 
 <h2>Arqueo/usuario-diario</h2>
-<a class="btn btn-warning" href="<?=base_url()?>index.php/GeneradorPdf/arqueo_usuario">PDF</a>
+<a class="btn btn-warning" href="<?=base_url()?>index.php/Pdfs/arqueo_usuario">PDF</a>
 <!--resultados -->
 <!-- footer -->
 <br>

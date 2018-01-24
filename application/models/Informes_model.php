@@ -30,6 +30,15 @@ if(sizeof($r)>0){  return $r['cantiregu'];}
  return "";
 }
 
+
+
+
+/*** resumen cobros */
+public function resumen_cobros(){
+
+}
+
+
 public function arqueo_usuario_diario($datee){ 
 
 $usua= $this->nativesession->get("usr");
