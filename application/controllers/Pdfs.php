@@ -36,8 +36,8 @@ private $html= "";
 
 
     public function generar() {
-        $header_string="xxxxxxx";
-        $header_title="CERTIFICADOS-INFORMES"; 
+        $header_string="Informe de arqueo";
+        $header_title="GESTION DE CERTIFICADOS"; 
         $nombre_archivo_str="informe";
 
         $this->load->library('Pdf');
@@ -51,7 +51,8 @@ private $html= "";
         $pdf->SetKeywords('informe, PDF, certificados');
 
 // datos por defecto de cabecera, se pueden modificar en el archivo tcpdf_config_alt.php de libraries/config
-        $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WItdH, $header_title , $header_string, array(0, 64, 255), array(0, 64, 128));
+//  array(0, 64, 255), array(0, 64, 128)
+        $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WItdH, $header_title , $header_string, array(0, 10,10), array(0,0,0));
         $pdf->setFooterData($tc = array(0, 64, 0), $lc = array(0, 64, 128));
 
         //color del texto 
@@ -117,25 +118,27 @@ private $html= "";
         $detalle= $regs['detalle'];  
         // Estilos
         $estilos="<style>
-        table{
-                border: 1px #0000aa solid;background: #cccccc; 
-                margin: 2px;
-        tr{
-                margin:1px;
+        *{
+                font-size: 12px; 
         }
+        .titulo{
+                font-size: 14px; text-align: center;
+        }
+        table{
+                border: 1px #0000aa solid;background: #cccccc;  
+
         td {
                 border: 1px solid #cccccc;
                 background-color: #ffffef;
                 margin: 5px;
             }
         </style>"; 
-
+/***********TABLA  1************ */
 $html= $estilos .
-' <table>
-<tr bgcolor="#cccccc"><th >N&deg;</th> <th>N&deg; comprobante</th> <th>N&deg; certificado</th> 
+'<table  cellpadding="7" >
+<tr bgcolor="#cccccc" class="fila" ><th>N&deg;</th> <th>N&deg; comprobante</th> <th>N&deg; certificado</th> 
 <th>Fecha certificado</th> <th>Estado cobro</th> <th>Monto</th> 
 <th>Nombres</th>  </tr>';
-
 $r=0;
 foreach ($detalle as $det):
 $html.='
@@ -146,13 +149,18 @@ $html.='
 </tr>';
 $r++; 
 endforeach;
+if( ! sizeof($detalle) ){
+$html.='<tr class="fila"> <td>*****</td> <td>*****  </td><td>*****</td><td>***** </td><td> ****** </td> 
+<td>  ***** </td><td> ****** </td> </tr>';     
+}
+$html.= '</table></br></br>';
 
 
-$html.= '</table>
-
-    <table >
-    <tr   bgcolor="#cccccc"><th colspan="3" >Resumen Cobros</th> </tr> 
-    <tr><th>Estado</th> <th>Cantidad</th> <th>Monto</th> </tr>';
+/**********TABLA 2 ************* */
+$html.= '
+    <table cellpadding="7" >
+    <tr   bgcolor="#bbbbbb" class="titulo"><th colspan="3" >Resumen Cobros</th> </tr> 
+    <tr  bgcolor="#cccccc"><th>Estado</th> <th>Cantidad</th> <th>Monto</th> </tr>';
     if( sizeof($totales) > 0) {
         $html.='<tr><td>Boletas cobradas</td>  <td>'.$totales['Cant bol'].'</td>  <td>'.$totales['Total'].'</td></tr> 
         <tr><td>Boletas exoneradas</td>  <td>'.$totales['Cant bol exo'].'</td>  <td>0</td></tr>
@@ -160,10 +168,10 @@ $html.= '</table>
         <tr><td>Totales: </td>  <td>'.$totales['Cant bol'].'</td> <td>'.$totales['Total'].'</td> </tr> 
         </table>';
 }
-
+/*************TABLA 3************ */
     $html.='
-    <table >
-    <tr  bgcolor="#cccccc"><th colspan="3">Resumen Certificados</th> </tr> 
+    <table  cellpadding="7" >
+    <tr  bgcolor="#bbbbbb" class="titulo"><th colspan="2">Resumen Certificados</th> </tr> 
     <tr  bgcolor="#cccccc"><th>Estado</th> <th>Cantidad</th> </tr>
 
     <tr><td>Emitidos</td>  <td>'.$totales['Cant certi'].'</td>  </tr> 
