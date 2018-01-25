@@ -1,21 +1,32 @@
 <div class="container" id="resultados-arqueo">
-<?php
- $r=0;
- foreach($detalle as $it){
- ?>
- <dl class="row">
- <dt>N&deg;</dt> <dd><?= $r ?></dd>
- <dt>N&deg; comprobante</dt> <dd><?= $it['nrobol']?></dd>
- <dt>N&deg; certificado</dt><dd><?= $it['serie'].$it['nrocerti']?></dd>
-  <dt>Fecha certificado</dt><dd><?= $it['fecha_bol']?></dd>
- <dt>Estado cobro</dt><dd> <?= $it['estado']?> </dd>
- <dt>Monto</dt><dd><?= $it['costo'] ?></dd>
- <dt>Nombres</dt><dd><?= $it['nombape']?></dd> 
 
- </dl>
- <?php
-  $r++;  }
+<table class="table table-responsive bg-success table-bordered table-stripped" style="font-size:14px;">
+ <tr><th>No</th>  <th>Comprobante</th> <th>Certificado</th> <th>Fecha</th>
+ <th>Estado</th> <th>Costo</th>  <th>Nombres y apellidos</th> </tr>
+
+<?php    $r=0;    foreach($detalle as $it){    ?>
+ 
+ <tr class="table-info">
+ <td><?= $r ?></td>  <td><?= $it['nrobol']?></td>
+ <td><?= $it['serie'].$it['nrocerti']?></td>
+<td><?= $it['fecha_bol']?></td>
+<td> <?= $it['estado']?> </td>
+ <td><?= $it['costo'] ?></td>
+<td><?= $it['nombape']?></td> 
+ </tr>
+ <?php    $r++;  }
+
+  if( !sizeof(  $detalle)){ ?>
+    <tr class="table-info">
+<td> *** </td>  <td> *** </td> <td> *** </td> <td> *** </td> <td> ***  </td> <td> *** </td> <td> *** </td> 
+    </tr>
+
+<?php
+  }
  ?>
+</table>
+
+
 
 
 
