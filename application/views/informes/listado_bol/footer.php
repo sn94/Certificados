@@ -1,3 +1,7 @@
+
+</div><!-- container -->
+
+
 <script type="text/javascript">
 $(function(){
     
@@ -12,7 +16,24 @@ var objDate= {
 $(".sel-fecha").datepicker( objDate );
 /**********************************/
  
-    
+   $("form[name=form-arqueo-gen]").on("submit", function(evt){
+       // se suprime la accion por defecto del evento que es el de refrescar la pagina
+evt.preventDefault();
+    // acciones personalizadas
+    var datosForm= $(this).serialize();
+    var objAjax= { 
+        url: "<?= base_url().'index.php/'?>Consulta/lista_boletas",
+        method: "POST",
+        data: datosForm,
+        success: function( data ){
+        $("#resultados-boletas").html(  data  );
+        }
+    } ;
+    $.ajax();
+
+alert("buscando");
+
+   } );
     
     
 });

@@ -103,7 +103,9 @@ class Consulta extends CI_Controller {
    
      public function lista_boletas(){
        $this->load->model("Informes_model");
-    $this->load->view("informes/lista_boletas");
+       $this->load->view("informes/lista_bol/header");
+    $this->load->view("informes/lista_bol/resultados");
+    $this->load->view("informes/lista_bol/footer");
    }
    
    

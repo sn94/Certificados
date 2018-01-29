@@ -105,6 +105,7 @@ public function resumen_cobros(){}
 
 public function listado_boletas(){
 $sql= "";
+echo "listado";
 }
 
 
