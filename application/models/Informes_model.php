@@ -99,7 +99,20 @@ $total=0;// Total en costos
 public function arqueo_usuario_fecha(){}
 public function arqueo_general(){}
 public function resumen_cobros(){}
-public function listado_boletas(){}
+
+
+
+
+public function listado_boletas(){
+$sql= "";
+}
+
+
+
+
+
+
+
 public function listado_certificados(){}
 public function boletas_anuladas(){}
 public function certificados_anulados(){}
