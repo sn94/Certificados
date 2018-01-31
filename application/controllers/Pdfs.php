@@ -5,7 +5,8 @@ if (!defined('BASEPATH'))
     
 class Pdfs extends CI_Controller {
         
-private $html= "";      
+private $html= "";  
+private $subtitulo="";    
         
 
     function __construct() { 
@@ -33,10 +34,12 @@ private $html= "";
    }
    
 
-
+public function set_Subtitulo(  $ar ){
+        $this->subtitulo= $ar;
+}
 
     public function generar() {
-        $header_string="Informe de arqueo";
+        $header_string= $this->subtitulo;
         $header_title="GESTION DE CERTIFICADOS"; 
         $nombre_archivo_str="informe";
 
@@ -179,7 +182,7 @@ $html.= '
     <tr><td>Regularizados</td>  <td>'.$totales['Cant certi reg'].'</td>  </tr>
 
     </table>';
-
+        $this->set_Subtitulo(  "Informe de arqueo"  );
         $this->set_ContenidoHtml( $html ); 
         $this->generar();  
         }
@@ -188,26 +191,52 @@ $html.= '
 
         public function listado_boletas(){
         $datos=$regs= $this->Informes_model->listado_boletas();
-        $estilos="";
+        $estilos="
+        <style>
+        *{
+                font-size: 12px; 
+        }
+        .titulo{
+                font-size: 11px; text-align: center;font-weight:bolder;
+        }
+        table{
+                border: 1px #0000aa solid;background: #cccccc;  
 
-        $html= $estilos.'<table>
-        <tr>
-  <th >Hora</th>
-  <th  >Nro.Boletas</th>
-  <th >Exon.</th>
-  <th >Costo</th>
-  <th >Anulado</th>
-  <th  >Fecha de anu.</th>
-  <th >Observaci&oacute;n</th>
-  <th >Usurio anu.&nbsp;</th> 
+        td {
+                border: 1px solid #cccccc;
+                background-color: #ffffef;
+                margin: 5px;
+            }
+        </style> ";
+
+        $html= $estilos .
+'<table  cellpadding="7" >
+<tr bgcolor="#bbbbbb" class="titulo">
+  <th>Hora</th>
+  <th>Nro. Boletas</th>
+  <th>Exonerado.</th>
+  <th>Costo</th>
+  <th>Anulado</th>
+  <th>Fecha de anu.</th>
+  <th>Obs.</th>
+  <th>Usuario anu.&nbsp;</th> 
 </tr>';
+
                 foreach($datos as $ite):
-        $html.='<tr>
+        $html.='<tr bgcolor="#eeeeee">
         <td> '.$ite['fecha'] .'</td>
+        <td> '.$ite['nrobol'] .'</td>
+        <td> '.$ite['exonerado'] .'</td>
+        <td> '.$ite['costo'] .'</td>
+        <td> '.$ite['anulado'] .'</td>
+        <td> '.$ite['fechaanu'] .'</td>
+        <td> '.$ite['observa'] .'</td>
+        <td> '.$ite['usuanu'] .'</td>
         </tr>';
                 endforeach;
 
        $html.=' </table>';
+       $this->set_Subtitulo(  "Listado de boletas"  );
         $this->set_ContenidoHtml(  $html) ;
         $this->generar();
         }

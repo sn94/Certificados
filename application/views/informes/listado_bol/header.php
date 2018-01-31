@@ -4,12 +4,11 @@
 <h2>Lista de boletas</h2>
 <a class="btn btn-warning" href="<?=base_url()?>index.php/Pdfs/listado_boletas">PDF</a>
 
-</br> 
-</br> 
+</br>  
 <div class="container">
 
 
-<form class="form-inline mt-5 mb-3" name="form-arqueo-gen">
+<form class="form-inline mt-3 mb-3" name="form-arqueo-gen">
  
  <div class="row">
 
@@ -24,7 +23,13 @@
  
  </div>
  
-  
+  <!-- check anulados -->
+
+<div class="form-check w-100">
+<label class="form-check-label">
+<input type="checkbox" name="bol-anulados" class="form-check-input" />Boletas anuladas
+</label>
+</div>
 
 <div class="btn-group mt-2">
 <button type="submit"  class="btn btn-success w-75" >Buscar</button>
