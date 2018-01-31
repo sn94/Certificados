@@ -1,21 +1,31 @@
-<div class="container"  id="resultados-boletas">
-
-<table>
+ 
+<table class="table table-responsive table-stripped bg-success table-bordered" style="font-size: 12px;">
 <tr>
-  <td ><strong>Hora</strong></td>
-  <td  ><strong>Nro.Boletas</strong></td>
-  <td ><strong>Exon.</strong></td>
-  <td ><strong>Costo</strong></td>
-  <td ><strong>Anulado</strong></td>
-  <td  ><strong>Fecha Anulación</strong></td>
-  <td ><strong>Observaci&oacute;n</strong></td>
-  <td ><strong>Usurio anu.</strong><strong>&nbsp;</strong></td>
-  <td >&nbsp;</td>
+  <th >Hora</th>
+  <th  >Nro.Boletas</th>
+  <th >Exon.</th>
+  <th >Costo</th>
+  <th >Anulado</th>
+  <th  >Fecha de anu.</th>
+  <th >Observaci&oacute;n</th>
+  <th >Usurio anu.&nbsp;</th> 
 </tr>
 <?php
 if( isset(  $listado)){
     if( sizeof( $listado) ){
         foreach( $listado as $ite){  ?>
+
+<tr>
+  <td >Hora</td>
+  <td  >Nro.Boletas</td>
+  <td >Exon.</td>
+  <td >Costo</td>
+  <td >Anulado</td>
+  <td  >Fecha de anu.</td>
+  <td >Observaci&oacute;n</td>
+  <td >Usurio anu.&nbsp;</td> 
+</tr>
+
 
 
 <?php       } ?>
@@ -27,5 +37,4 @@ if( isset(  $listado)){
 <?php  }  }    ?>
 
 
-
-</div>
+ 

@@ -29,7 +29,7 @@ evt.preventDefault();
         $("#resultados-boletas").html(  data  );
         }
     } ;
-    $.ajax();
+    $.ajax(    objAjax  );
 
 alert("buscando");
 

@@ -110,8 +110,7 @@ class Welcome extends CI_Controller {
    
    
      public function lista_boletas(){
-    $this->load->view("informes/listado_bol/header");
-    $this->load->view("informes/listado_bol/resultados");
+    $this->load->view("informes/listado_bol/header"); 
     $this->load->view("informes/listado_bol/footer");
    }
    

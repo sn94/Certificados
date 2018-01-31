@@ -185,4 +185,31 @@ $html.= '
         }
 
 
+
+        public function listado_boletas(){
+        $datos=$regs= $this->Informes_model->listado_boletas();
+        $estilos="";
+
+        $html= $estilos.'<table>
+        <tr>
+  <th >Hora</th>
+  <th  >Nro.Boletas</th>
+  <th >Exon.</th>
+  <th >Costo</th>
+  <th >Anulado</th>
+  <th  >Fecha de anu.</th>
+  <th >Observaci&oacute;n</th>
+  <th >Usurio anu.&nbsp;</th> 
+</tr>';
+                foreach($datos as $ite):
+        $html.='<tr>
+        <td> '.$ite['fecha'] .'</td>
+        </tr>';
+                endforeach;
+
+       $html.=' </table>';
+        $this->set_ContenidoHtml(  $html) ;
+        $this->generar();
+        }
+
 }

@@ -97,15 +97,39 @@ $total=0;// Total en costos
 
 
 public function arqueo_usuario_fecha(){}
-public function arqueo_general(){}
-public function resumen_cobros(){}
+public function arqueo_general(){} 
 
 
 
 
-public function listado_boletas(){
-$sql= "";
-echo "listado";
+public function listado_boletas(){ 
+  
+      $fechaini= $this->input->post("txt-fecha-desde");
+      $fechafin= $this->input->post("txt-fecha-hasta");
+      $usuario= $this->nativesession->get("usr");
+      $sql="";
+
+
+      if(  $fechaini!="" && $fechafin!="")
+      $sql="select fecha_bol as fecha, usucar, nrobol, exonerado, costo, anulado,
+       fechaanu,observa, usuanu  from certificado.boletas 
+       where fecha_bol>='$fechaini' and fecha_bol<='$fechafin'";
+
+     $where = array();
+ 
+       if($usuario) array_push($where, "usucar = '$usuario'");
+
+       if(count($where) > 0) $sql = $sql . ' and ' . implode($where, " and ");
+       
+      if( $sql!=""){
+        $sql = $sql.' order by fecha, usucar, nrobol';
+      $consulta= $this->db->query(  $sql );
+      $resu_consulta= $consulta->result_array();
+      return $resu_consulta;}
+      else {
+        return array();
+      }
+      
 }
 
 
