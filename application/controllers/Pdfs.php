@@ -190,52 +190,46 @@ $html.= '
 
 
         public function listado_boletas(){
-        $datos=$regs= $this->Informes_model->listado_boletas();
-        $estilos="
-        <style>
-        *{
-                font-size: 12px; 
+        $datos= $this->Informes_model->listado_boletas();
+        if( sizeof($datos) ){
+                $claves= array_keys( $datos[0]  );
+                $estilos="
+                <style>
+                *{
+                        font-size: 12px; 
+                }
+                .titulo{
+                        font-size: 11px; text-align: center;font-weight:bolder;
+                }
+                table{
+                        border: 1px #0000aa solid;background: #cccccc;  
+        
+                td {
+                        border: 1px solid #cccccc;
+                        background-color: #ffffef;
+                        margin: 5px;
+                    }
+                </style> ";
+        
+                $html= $estilos .
+        '<table  cellpadding="7" >
+        <tr bgcolor="#bbbbbb" class="titulo">';
+        foreach($claves as $it){
+           $html.=  '<th>'. $it.'</th>';
         }
-        .titulo{
-                font-size: 11px; text-align: center;font-weight:bolder;
-        }
-        table{
-                border: 1px #0000aa solid;background: #cccccc;  
-
-        td {
-                border: 1px solid #cccccc;
-                background-color: #ffffef;
-                margin: 5px;
-            }
-        </style> ";
-
-        $html= $estilos .
-'<table  cellpadding="7" >
-<tr bgcolor="#bbbbbb" class="titulo">
-  <th>Hora</th>
-  <th>Nro. Boletas</th>
-  <th>Exonerado.</th>
-  <th>Costo</th>
-  <th>Anulado</th>
-  <th>Fecha de anu.</th>
-  <th>Obs.</th>
-  <th>Usuario anu.&nbsp;</th> 
-</tr>';
-
+        $html.'</tr>';
+        
                 foreach($datos as $ite):
-        $html.='<tr bgcolor="#eeeeee">
-        <td> '.$ite['fecha'] .'</td>
-        <td> '.$ite['nrobol'] .'</td>
-        <td> '.$ite['exonerado'] .'</td>
-        <td> '.$ite['costo'] .'</td>
-        <td> '.$ite['anulado'] .'</td>
-        <td> '.$ite['fechaanu'] .'</td>
-        <td> '.$ite['observa'] .'</td>
-        <td> '.$ite['usuanu'] .'</td>
-        </tr>';
-                endforeach;
-
-       $html.=' </table>';
+                        foreach($claves as $cla):
+                $html.='<tr bgcolor="#eeeeee"> <td> '.$ite[ $cla  ] .'</td>  </tr>';
+                        endforeach;
+                        endforeach;
+        
+               $html.=' </table>';
+        }//  Si no esta vacio
+       else{
+               $html="<h5>Sin resultados</h5>";
+       }
        $this->set_Subtitulo(  "Listado de boletas"  );
         $this->set_ContenidoHtml(  $html) ;
         $this->generar();

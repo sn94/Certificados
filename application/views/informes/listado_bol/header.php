@@ -25,20 +25,20 @@
  
   <!-- check anulados -->
 
-<div class="form-check w-100">
+<div class="form-check col-12 col-md-3">
 <label class="form-check-label">
 <input type="checkbox" name="bol-anulados" class="form-check-input" />Boletas anuladas
 </label>
 </div>
 
-<div class="form-check w-100">
+<div class="form-check col-12 col-md-4">
 <label class="form-check-label">
 <input type="checkbox" name="bol-agrupar" class="form-check-input" />Agrupar por fecha
 </label>
 </div>
 
 
-<div class="btn-group mt-2">
+<div class="btn-group mt-2 col-12 offset-md-1 col-md-4">
 <button type="submit"  class="btn btn-success w-75" >Buscar</button>
 <button type="button" class="btn btn-danger w-75">Salir</button>
 </div> 

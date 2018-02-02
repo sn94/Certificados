@@ -131,9 +131,9 @@ public function listado_boletas(  ){
         if($AGRUPAR)  $sql="select fecha_bol as Fecha, usucar as Usuario, count(*) as Cantidad from
          certificado.boletas ";
         else
-        $sql="select fecha_bol as Fecha, usucar as Usuario, nrobol as 'Nro. boleta', exonerado as Exonerado,
-         costo as Costo, anulado as Anulado,
-        fechaanu as  'Fecha de anu.',observa as 'Obs.', usuanu as  'Anulado por' from certificado.boletas ";
+        $sql='select fecha_bol as Fecha, usucar as Usuario, nrobol as "Nro. boleta", exonerado as Exonerado,
+         costo as Costo, anulado as Anulado, fechaanu as  "Fecha de anu.",observa as " Obs.",
+          usuanu as "Anulado por"  from certificado.boletas ' ;
  
         array_push($where, "usucar = '$usuario'");
         if( $ANULADO) array_push($where,  "anulado='S'");

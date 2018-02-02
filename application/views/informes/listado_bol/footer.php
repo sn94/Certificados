@@ -31,7 +31,7 @@ evt.preventDefault();
     } ;
     $.ajax(    objAjax  );
 
-alert("buscando");
+ 
 
    } );
     
