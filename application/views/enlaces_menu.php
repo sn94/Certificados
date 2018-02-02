@@ -48,10 +48,8 @@
              <li><a  href="#" enlace="<?=  base_url("index.php/Welcome/resumen_general");?>" titulo="Resumen cobros"   class="skel-layers-ignoreHref"><span class="icon fa-th">Resumen cobros</span></a></li>
           	<li><a  href="#" enlace="<?=  base_url("index.php/Welcome/lista_boletas");?>" titulo="Listado de boletas" class="skel-layers-ignoreHref"><span class="icon fa-th">Listado de boletas</span></a></li>
         	<li><a href="#" enlace="<?=  base_url("index.php/Welcome/lista_certifi");?>" titulo="Listado de certificados" class="skel-layers-ignoreHref"><span class="icon fa-th">Listado de certificados</span></a></li>
-         <li><a href="#" enlace="<?=  base_url("index.php/Welcome/lista_boletas_anu");?>" titulo="Boletas anuladas" class="skel-layers-ignoreHref"><span class="icon fa-th">Boletas anuladas</span></a></li>
-          	<li><a  href="#" enlace="<?=  base_url("index.php/Welcome/lista_certifi_anu");?>" titulo="Certificados anulados" class="skel-layers-ignoreHref"><span class="icon fa-th">Certificados anulados</span></a></li>
-          	<li><a  href="#" enlace="<?=  base_url("index.php/Welcome/resumen_bol_fecha");?>" titulo="Resumen boletasxFecha" class="skel-layers-ignoreHref"><span class="icon fa-th">Resumen boletasxFecha</span></a></li>
-        	<li><a  href="#" enlace="<?=  base_url("index.php/Welcome/resumen_certi_fecha");?>" titulo="Resumen certificados x fecha" class="skel-layers-ignoreHref"><span class="icon fa-th">Resumen certificados x fecha</span></a></li>
+            <li><a  href="#" enlace="<?=  base_url("index.php/Welcome/lista_certifi_anu");?>" titulo="Certificados anulados" class="skel-layers-ignoreHref"><span class="icon fa-th">Certificados anulados</span></a></li>
+          <li><a  href="#" enlace="<?=  base_url("index.php/Welcome/resumen_certi_fecha");?>" titulo="Resumen certificados x fecha" class="skel-layers-ignoreHref"><span class="icon fa-th">Resumen certificados x fecha</span></a></li>
 
              <li><a href="#" enlace="<?=  base_url("index.php/Welcome/cantidad_certifi");?>" titulo="Cant. expedida. por nac." class="skel-layers-ignoreHref"><span class="icon fa-th">Cant. expedida. por nac.</span></a></li>
         </ul>

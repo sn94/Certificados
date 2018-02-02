@@ -102,31 +102,52 @@ public function arqueo_general(){}
 
 
 
-public function listado_boletas(){ 
+public function listado_boletas(  ){ 
   
       $fechaini= $this->input->post("txt-fecha-desde");
       $fechafin= $this->input->post("txt-fecha-hasta");
+      $anulado=  $this->input->post("bol-anulados");
+      $agrupar=  $this->input->post("bol-agrupar");
+
+
+      $ANULADO=FALSE;
+      $AGRUPAR=FALSE;
+
+      if($anulado) $ANULADO= TRUE;
+      /************** */
+      if( $agrupar) $AGRUPAR= TRUE;
+      
+
       $usuario= $this->nativesession->get("usr");
+      if( !$usuario)
+      $usuario= "william";
+      //$this->input->post("txt-usuario");
+
       $sql="";
-
-
-      if(  $fechaini!="" && $fechafin!="")
-      $sql="select fecha_bol as fecha, usucar, nrobol, exonerado, costo, anulado,
-       fechaanu,observa, usuanu  from certificado.boletas 
-       where fecha_bol>='$fechaini' and fecha_bol<='$fechafin'";
-
+     
      $where = array();
  
-       if($usuario) array_push($where, "usucar = '$usuario'");
+       if($usuario){
+        if($AGRUPAR)  $sql="select fecha_bol as Fecha, usucar as Usuario, count(*) as Cantidad from
+         certificado.boletas ";
+        else
+        $sql="select fecha_bol as Fecha, usucar as Usuario, nrobol as 'Nro. boleta', exonerado as Exonerado,
+         costo as Costo, anulado as Anulado,
+        fechaanu as  'Fecha de anu.',observa as 'Obs.', usuanu as  'Anulado por' from certificado.boletas ";
+ 
+        array_push($where, "usucar = '$usuario'");
+        if( $ANULADO) array_push($where,  "anulado='S'");
+        if(  $fechaini && $fechafin) array_push( $where,  "fecha_bol>='$fechaini' and fecha_bol<='$fechafin'");
+      }
 
-       if(count($where) > 0) $sql = $sql . ' and ' . implode($where, " and ");
-       
-      if( $sql!=""){
-        $sql = $sql.' order by fecha, usucar, nrobol';
+      if(count($where) > 0) $sql = $sql . ' where ' . implode($where, " and ");
+      if($AGRUPAR) $sql= $sql.  " group by fecha_bol,usucar ";
+
+      if( $sql!=""){  
       $consulta= $this->db->query(  $sql );
       $resu_consulta= $consulta->result_array();
-      return $resu_consulta;}
-      else {
+      return $resu_consulta;
+    }else {
         return array();
       }
       
@@ -138,10 +159,8 @@ public function listado_boletas(){
 
 
 
-public function listado_certificados(){}
-public function boletas_anuladas(){}
-public function certificados_anulados(){}
-public function resumen_boletasxfecha(){}
+public function listado_certificados(){} 
+public function certificados_anulados(){} 
 public function resumen_certifixfecha(){}
 public function resumen_general_mes(){}
 public function cantidad_expedi_nacio(){}

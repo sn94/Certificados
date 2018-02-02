@@ -1,40 +1,35 @@
- 
+ <?php  
+ if( sizeof( $listado) ){
+   ?>
+
+
 <table class="table table-responsive table-stripped bg-success table-bordered" style="font-size: 12px;">
+<?php   $claves= array_keys( $listado[0]); ?>
+
 <tr>
-  <th >Hora</th>
-  <th  >Nro.Boletas</th>
-  <th >Exon.</th>
-  <th >Costo</th>
-  <th >Anulado</th>
-  <th  >Fecha de anu.</th>
-  <th >Observaci&oacute;n</th>
-  <th >Usurio anu.&nbsp;</th> 
-</tr>
+<?php  foreach($claves as $it){?>
+  <th ><?=  $it  ?></th>
+<?php  }  ?>
+</tr> 
+
+
+
 <?php
 if( isset(  $listado)){
-    if( sizeof( $listado) ){
-        foreach( $listado as $ite){  ?>
+  if( sizeof( $listado) ){
+    foreach( $listado as $ite){
 
-<tr>
-  <td >Hora</td>
-  <td  >Nro.Boletas</td>
-  <td >Exon.</td>
-  <td >Costo</td>
-  <td >Anulado</td>
-  <td  >Fecha de anu.</td>
-  <td >Observaci&oacute;n</td>
-  <td >Usurio anu.&nbsp;</td> 
-</tr>
+      foreach($claves as $cla){?>
 
+<tr> <td > <?=  $ite[  $cla] ?></td>    </tr>
 
-
-<?php       } ?>
-
-
-    </table>
-
-
+<?php }    } ?>
+</table>
 <?php  }  }    ?>
+
+<?php  }else{
+  echo "NADA";
+}  ?>
 
 
  

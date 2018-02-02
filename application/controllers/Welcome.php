@@ -115,9 +115,7 @@ class Welcome extends CI_Controller {
    }
    
    
-     public function lista_boletas_anu(){
-    $this->load->view("informes/lista_boletas_anu");
-   }
+  
    
   
      public function lista_certifi(){
@@ -129,10 +127,7 @@ class Welcome extends CI_Controller {
     $this->load->view("informes/lista_certifi_anu");
    }
    
-   
-     public function resumen_bol_fecha(){
-    $this->load->view("informes/resumen_bol_fecha");
-   }
+    
    
      public function resumen_certi_fecha(){
     $this->load->view("informes/resumen_certi_fecha");
