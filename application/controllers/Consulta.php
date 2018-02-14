@@ -116,13 +116,15 @@ class Consulta extends CI_Controller {
   
      public function lista_certifi(){
        $this->load->model("Informes_model");
-    $this->load->view("informes/lista_certifi");
+    $datos['certis']= $this->Informes_model->listado_certificados();
+    $this->load->view("informes/certificados/resultados", $datos );
    }
    
    
      public function lista_certifi_anu(){
        $this->load->model("Informes_model");
-    $this->load->view("informes/lista_certifi_anu");
+    $datos['certis']= $this->Informes_model->listado_certificados();
+    $this->load->view("informes/lista_certifi_anu", $datos );
    }
    
    

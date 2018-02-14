@@ -159,7 +159,48 @@ public function listado_boletas(  ){
 
 
 
-public function listado_certificados(){} 
+public function listado_certificados(){
+  $fechaini= $this->input->post("txt-fecha-desde");
+  $fechafin= $this->input->post("txt-fecha-hasta");
+  $usuario="";
+   if($this->nativesession->get("usr"))
+   $usuario= $this->nativesession->get("usr");
+   else
+  $usuario= $this->input->post("txt-usuario");
+
+  $res= array();
+
+// Consulta sql
+$sql="select fecha_cert, usucar, fechacar, nrocert, anulado, fechaanu,
+observa, usuanu, antecedente, captura 
+from certificado.certificado ";
+if( $usuario ){
+  if($fechaini && $fechafin){
+    $sql.="where fecha_cert>='$fechaini' and fecha_cert<='$fechafin' and anulado='S'";
+    $where = array();
+    array_push($where, "usucar = '$usuario'");
+    if(count($where) > 0){ $sql = $sql . ' and ' . implode($where, " and ");    }
+    $sql = $sql.' order by fecha_cert, nrocert';
+    //Obtencion de registros
+  $query=  $this->db->query(  $sql );
+  $res= $query->result_array();
+
+  }
+}
+
+ 
+//devolver
+return  $res;
+} 
+
+
+
+
+
+
+
+
+
 public function certificados_anulados(){} 
 public function resumen_certifixfecha(){}
 public function resumen_general_mes(){}

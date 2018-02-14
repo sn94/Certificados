@@ -4,7 +4,7 @@
  <tr><th>No</th>  <th>Comprobante</th> <th>Certificado</th> <th>Fecha</th>
  <th>Estado</th> <th>Costo</th>  <th>Nombres y apellidos</th> </tr>
 
-<?php    $r=0;    foreach($detalle as $it){    ?>
+<?php    $r=0;   foreach($detalle as $it){    ?>
  
  <tr class="table-info">
  <td><?= $r ?></td>  <td><?= $it['nrobol']?></td>

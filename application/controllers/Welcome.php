@@ -119,14 +119,12 @@ class Welcome extends CI_Controller {
    
   
      public function lista_certifi(){
-    $this->load->view("informes/lista_certifi");
+      $this->load->view("informes/certificados/header"); 
+      $this->load->view("informes/certificados/footer"); 
    }
    
    
-     public function lista_certifi_anu(){
-    $this->load->view("informes/lista_certifi_anu");
-   }
-   
+    
     
    
      public function resumen_certi_fecha(){
